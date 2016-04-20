@@ -26,9 +26,15 @@ class Room:
 def start():
     print("Welcome to Fun House, where anything could happen...")
     room1 = Room("You are in an empty room, painted in a pleasant indigo color.", [], {"n":"room2"})
-    room1.describeroom()
-    room1.exitsfromroom()
-    print("what would you like to do?")
+    roomloop(room1)
+
+def roomloop(currentroom):
+    currentroom.describeroom()
+    currentroom.exitsfromroom()
+    command = input("What would you like to do?")
+    if command in currentroom.directionsoutdict:
+        currentroom = room1.directionsoutdict[command]
+        print(currentroom)
 
 if __name__ == '__main__':
     start()
